@@ -17,9 +17,9 @@ def journal_search(query_word):
         print(item['label'] + "--" + item['id'])
 
 
-def saveto_file(issn, aid, date, name, num):
+def saveto_file(issn, aid, date, name, num, pages):
     filename = issn + ".csv"
-    article = [date, aid, name, str(num)]
+    article = [date, aid, name, str(num), pages]
     writer = csv.writer(
         open(
             filename,
@@ -74,13 +74,16 @@ def journal_result(issn):
                 " -- " +
                 item['dc:title'] +
                 " -- " +
-                str(ref_num))
+                str(ref_num) +
+                " -- " +
+                str(int(item['prism:endingPage'])-int(item['prism:startingPage'])+1))
             saveto_file(
                 issn,
                 item['prism:url'].split('/')[6],
                 item['prism:coverDate'][0]['$'],
                 item['dc:title'],
-                str(ref_num))
+                str(ref_num),
+                str(int(item['prism:endingPage'])-int(item['prism:startingPage'])+1))
 
 
 def main():
