@@ -7,7 +7,7 @@
 $ cd science_journal
 $ virtualenv venv -p python3
 $ source venv/bin/activate
-$ pip install -r requirements.txt
+$ pip3 install -r requirements.txt
 ```
 3. Replace `[insert your key here]` from `science_journal.py` to API key  
 4. Run program  
